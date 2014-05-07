@@ -1,0 +1,16 @@
+<% include header %>
+   <h2>Team Projects</h2>
+   <% if(rs.length > 0) { %>
+    <table id='projectview'>
+        <tr><th>Name</th></tr>
+        <% for (var i=0; rs.length > i; i++) { %>
+            <tr>
+             <td><%= rs[i].Name %></td>
+            </tr>
+        <% } %>
+    </table>
+    <% } else { %>
+         No users are entered into the database.
+    <% } %>
+
+<% include footer %>

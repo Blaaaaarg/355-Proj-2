@@ -1,0 +1,105 @@
+<% include header %>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+               $.ajax({
+                    url: "/projects/selectteam",
+                    type: "POST",
+                    contentType: "application/json", 
+                    processData: false,
+                    complete: function (data) {
+                        $('div#team').html(data.responseText);
+                    }
+               });
+               $.ajax({
+                    url: "/projects/selectuser",
+                    type: "POST",
+                    contentType: "application/json", 
+                    processData: false,
+                    complete: function (data) {
+                        $('div#leader').html(data.responseText);
+                    }
+              });
+              $.ajax({
+                    url: "/teams/selectuser",
+                    type: "POST",
+                    contentType: "application/json", 
+                    processData: false,
+                    complete: function (data) {
+                        $('div#smaster').html(data.responseText);
+                    }
+              });
+
+              
+                // Retrieve data from MySQL for a specific user 
+              $('#sbmt_1').click(function () { 
+                         var payload = { 
+                              PID: $('#proj-list').val(), // prob broken here
+                              TID: $('#team-list').val(),
+                              Name: $('#tname').val(),
+                              leader: $('#user-list').val(),
+                              scrum_master: $('#user-list2').val()
+                           }; 
+                             
+                            $.ajax({ 
+                                url: "/teams/addproject", 
+                                type: "POST", 
+                                contentType: "application/json", 
+                                processData: false, 
+                                data: JSON.stringify(payload), 
+                                complete: function (data) { 
+                                    $('#db_output').html(data.responseText); 
+                              } 
+                           });
+                      });
+            $('#sbmt_4').click(function () { 
+                         var payload = { 
+                              PID: $('#proj-list').val(), // prob broken here
+                              TID: $('#team-list').val(),
+                              Name: $('#tname').val(),
+                              leader: $('#user-list').children(':selected').text(),
+                              smaster: $('#user-list2').children(':selected').text()
+                           }; 
+                            $.ajax({ 
+                                url: "/teams/update", 
+                                type: "POST", 
+                                contentType: "application/json", 
+                                processData: false, 
+                                data: JSON.stringify(payload), 
+                                complete: function (data) { 
+                                    $('#db_output2').html(data.responseText); 
+                              } 
+                           });
+                      });
+            });
+        </script>
+
+   <h2>Teams</h2>
+   <% if(rs.length > 0) { %>
+    <table id="teamview">
+        <tr><th>Name</th><th>Leader</th><th>Scrum Master</th><th>Projects</th><th>Members</th></tr>
+        <% for (var i=0; rs.length > i; i++) { %>
+            <tr>
+             <td><%= rs[i].Name %></td>
+             <td><%= rs[i].leader %></td>
+             <td><%= rs[i].scrum_master %></td>
+             <td><a href='/teams/projects'>projects</a></td>
+             <td><a href='/teams/members'>members</a></td>
+            </tr>
+        <% } %>
+    </table>
+    <% } else { %>
+         No teams are entered into the database.
+    <% } %>
+
+    <h2>Add New Project</h2>
+        <div style="display:inline;" id="team"></div>
+        <div style="display:inline;" id="leader"></div>
+        <div style="display:inline;" id="smaster"></div>
+        Name: <input id="tname" type="text" />
+        <input id="sbmt_1" type="submit" style="display:inline;" value="Save New Team Project"/>
+        <input id="sbmt_4" type="submit" style="display:inline;" value="Update Team Information"/>
+        <p id="db_output"></p>
+
+
+<% include footer %>

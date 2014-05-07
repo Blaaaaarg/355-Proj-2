@@ -1,0 +1,41 @@
+<% include header %>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                $.ajax({
+                    url: "/projects/select",
+                    type: "POST",
+                    contentType: "application/json",
+                    processData: false,
+                    complete: function (data) {
+                        $('div#prj').html(data.responseText);
+                    }
+               });
+                // Retrieve data from MySQL for a specific user 
+              $('#sbmt_1').click(function () { 
+                         var payload = { 
+                              PID: $('#proj-list').val(), // prob broken here
+                           }; 
+                             
+                            $.ajax({ 
+                                url: "/projects/backlog", 
+                                type: "POST", 
+                                contentType: "application/json", 
+                                processData: false, 
+                                data: JSON.stringify(payload), 
+                                complete: function (data) { 
+                                    $('#db_output').html(data.responseText); 
+                              } 
+                           });
+                      });
+            });
+
+    </script>
+            <h2>Select a project to get its information</h2>
+            <div id="prj"></div>
+            <input id="sbmt_1" type="submit" />
+            <p id="db_output"></p>
+
+
+<% include footer %>

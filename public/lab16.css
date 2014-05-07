@@ -1,0 +1,300 @@
+#header 
+{
+    background: linear-gradient(to left, #000066, #555555);
+    margin:10px;
+    font-size:75px;
+    font-family:"Arial", Arial, sans-serif;
+    padding:10px;
+    text-shadow: 4px 4px 15px #FFFFFF;
+    box-shadow:10px 10px 15px #D1D1D1;
+    border-style:inset;
+    border-width:5px;
+    border-color:#4E4E4E;
+}
+
+#main
+{
+    margin-left:140px;
+    margin-top:20px;
+}
+
+#menu
+{
+   /* background: -moz-linear-gradient(#669999, #9CC3C3);
+    background: -o-linear-gradient(red, blue);
+    background: --webkit-linear-gradient(red, blue);*/
+    background: linear-gradient(#555555, #000066); // 00e1fa, 406cff
+    height:20px;
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:30px;
+    margin-top:20px;
+    padding:5px;
+    text-align:center;
+    box-shadow:10px 10px 15px #D1D1D1;
+    border-width:5px;
+    border-radius:20px;
+    border-color:#4E4E4E;
+}
+
+#menulink
+{
+    margin:55px;
+    display:inline;
+}
+
+#content
+{
+    height:1000px;
+    width:90%;
+    text-align:left;
+    margin-left:auto;
+    margin-bottom:80px;
+    margin-top:30px;
+    margin-right:auto;
+    //float:right;
+    border-width:5px;
+    border-style:inset;
+    border-color:#4E4E4E;
+    background-color:#000A40;
+    box-shadow:10px 10px 15px #D1D1D1;
+    padding:20px;
+    color:white;
+}
+
+#entry
+{
+    width: 300px;
+    height: 150px;
+}
+
+.category
+{
+    float:left;
+    margin:30px;
+    width:300px;
+    background-color:#333333;
+}
+
+.category.over
+{
+    border:2px dashed white;
+}
+
+.moves
+{
+    height:100px;
+    width:250px;
+    margin:25px;
+    float:left;
+    border:2px solid;
+    background-color:#FFFFFF;
+    text-align:center;
+    color:black;
+}
+
+.frontblock
+{
+    height:100%;
+    width:1100px;
+    text-align:left;
+    margin:0px;
+    float:left;
+    font-size:36px;
+    display:inline;
+    border:2px solid;
+    border-radius:20px;
+}
+
+.frontblock:hover
+{
+    height:100%;
+    width:1100px;
+    text-align:left;
+    margin:0px;
+    float:left;
+    font-size:50px;
+    border:2px solid;
+    border-radius:20px;
+}
+
+.popblock
+{
+    height:100%;
+    width:200px;
+    text-align:left;
+    margin:0px;
+    float:left;
+    font-size:20px;
+    border:2px solid;
+    border-radius:20px;
+}
+
+.popblock:hover
+{
+    height:100%;
+    width:400px;
+    text-align:left;
+    margin:0px;
+    float:left;
+    font-size:40px;
+    border:2px solid;
+    border-radius:20px;
+}
+
+#footer
+{
+    background-color:#000A40;
+    color:white;
+    clear:both;
+    text-align:center;
+    margin-left:0px;
+    margin-top:20px;
+    padding:5px;
+}
+
+#elevator
+{
+    text-align:left;
+    margin-left:10px;
+    margin-top:10px;
+    font-size:40px;
+}
+
+#welcome
+{
+    width:96%;
+}
+
+#login
+{
+    width:30%;
+}
+
+#teamview
+{
+    width:96%;
+    border:3px solid black;
+}
+
+#memberview
+{
+    width:20%;
+}
+
+#projectview
+{
+    width:20%;
+}
+
+.about
+{
+    font-size:30px;
+}
+
+body
+{
+    margin:0px;
+    display:inline;
+    background-color:#656565;
+}
+
+img
+{
+    margin-right:25px;
+    margin-bottom:25px;
+    padding:0px;
+    float:right;
+}
+
+p
+{
+    text-align:left;
+    font-family:"Times New Roman", Times, serif;
+    margin:10px;
+}
+
+h1
+{
+    font-family:"Arial", Arial, sans-serif;
+}
+
+h2
+{
+    font-family:"Arial", Arial, sans-serif;
+    font-size:25px;
+    padding:0px;
+    margin:10px;
+    text-decoration:underline;
+}
+
+a:link
+{
+    color:#EB0E0E;
+}
+a:visited
+{
+    color:#347300;
+}
+a:hover
+{
+    color:#FF00FF;
+    text-decoration:underline;
+}
+a:active
+{
+    color:#0000FF;
+    text-decoration:underline;
+}
+
+ul
+{
+    list-style-type:square;
+    margin:10px;
+    font-size:30px;
+}
+
+ol
+{
+    list-style-type:number;
+    padding:0px;
+}
+
+table
+{
+    width:100%;
+    margin:20px;
+}
+
+table, th, td
+{
+    border:2px solid black;
+    border-collapse:collapse;
+}
+
+th
+{
+    color:white;
+    padding:10px;
+    background-color:gray;
+}
+
+td
+{
+    text-align:left;
+    vertical-align:bottom;
+    padding:5px;
+    color: black;
+}
+
+tr
+{
+    background-color:#DDDDDD;
+}
+
+.dark_row
+{
+    background-color:#B8E6E6;
+}
+

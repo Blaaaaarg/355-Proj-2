@@ -1,0 +1,171 @@
+<% include header %>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                $.ajax({
+                    url: "/projects/select",
+                    type: "POST",
+                    contentType: "application/json",
+                    processData: false,
+                    complete: function (data) {
+                        $('div#prj').html(data.responseText);
+                    }
+               });
+                // Retrieve data from MySQL for a specific user 
+              $('#sbmt_1').click(function () { 
+                         var payload = { 
+                              PID: $('#proj-list').val(), // prob broken here
+                           }; 
+                             
+                            $.ajax({ 
+                                url: "/projects/sprints", 
+                                type: "POST", 
+                                contentType: "application/json", 
+                                processData: false, 
+                                data: JSON.stringify(payload), 
+                                complete: function (data) { 
+                                    $('#db_output').html(data.responseText); 
+                              } 
+                           });
+                      });
+            });
+
+//        function dragstart(ev)
+ //       {
+  //          this.style.opacity = '0.4';
+   //     }
+        //var cols = document.querySelectorAll('.category .moves');
+        
+        /*function allowDrop(ev)
+        {
+            alert('wuuuut?');
+            ev.preventDefault();
+        }
+        function drag(ev)
+        {
+            event.dataTransfer.setData("Text", event.target.id);
+            //ev.dataTransfer.setData('text/html', this.innerHTML);
+        }
+        function drop(ev)
+        {
+            alert('wuuuut?');
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+            //this.innerHTML = data;
+        }*/
+
+        var dragsource = null;
+
+        function dragstart(ev)
+        {
+            this.style.opacity = '0.4';
+            dragsource = this;
+            ev.dataTransfer.effectAllowed = 'move';
+            ev.dataTransfer.setData('text/html', this.innerHTML);
+        }
+
+        function dragover(ev)
+        {
+            ev.preventDefault();
+            ev.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function dragenter(ev)
+        {
+            this.classList.add('over');
+        }
+
+        function dragleave(ev)
+        {
+            this.classList.remove('over');
+        }
+
+        function dragend(ev)
+        {
+            [].forEach.call(cols, function (col)
+            {
+                col.classList.remove('over');
+            });
+        }
+
+        function drop(ev)
+        {
+            ev.preventDefault();
+            if (dragsource != this)
+            {
+                this.innerHTML = ev.dataTransfer.getData('text/html');
+            }
+            return false;
+        }
+
+        var cols = document.querySelectorAll('.category .column');
+        [].forEach.call(cols, function(col)
+        {
+            col.addEventListener('startdrag', dragstart, false);
+            col.addEventListener('enddrag', dragover, false);
+            col.addEventListener('hovering', dragenter, false);
+            col.addEventListener('leaving', dragleave, false);
+            col.addEventListener('adrop', drop, false);
+            col.addEventListener('enddrag', dragend, false);
+        });
+
+        var total_entries = $('.moves');
+        function Save() 
+        {
+            for (var i = 0; i < total_entries.length; i++)
+            {
+                console.log(total_entries[i].id);
+            }
+        }
+
+        /*$(document).ready(function () {
+            $('#sbmt_2').click(function () { 
+                         var payload = { 
+                              EID: $('#mod').name(), // prob broken here
+                              Entry: $('#mod').innerHTML
+                           }; 
+                             
+                            $.ajax({ 
+                                url: "/projects/sprints/save", 
+                                type: "POST", 
+                                contentType: "application/json", 
+                                processData: false, 
+                                data: JSON.stringify(payload), 
+                                complete: function (data) { 
+                                    //$('#db_output').html(data.responseText); 
+                              } 
+                           });
+                      });
+            });
+        function load(id)
+        {
+            document.getElementById('mod').innerHTML = document.getElementById(id).innerHTML;
+            document.getElementById('mod').name = id;
+        }*/
+    </script>
+            <h2>Select a project to get its information</h2>
+            <div id="prj"></div>
+            <input id="sbmt_1" type="submit" value="Select"/>
+            <br />
+            <h2 style="display: inline;margin:130px;">To Do</h2>
+            <h2 style="display: inline;margin:130px;">In Progress</h2>
+            <h2 style="display: inline;margin:130px;">Finished</h2>
+            <p id="db_output"></p>
+           
+            <!--<div style="float:right;margin-left:300px;margin-right:300px;">
+                <textarea id="entry" rows="10" cols="30">New Entry</textarea>
+                <select>
+                    <option value="1">To Do</option>
+                    <option value="2">In Progress</option>
+                    <option value="3">Finished</option>
+                </select>
+                <input type="submit" id="submt_2" style="display:inline;" value="Save"/>
+            </div>
+            <div style="float:right;width:1000px;">
+                <textarea id="mod" name="mod" cols="25" rows="8">Select a box to edit...</textarea>
+                <input type="submit" id="sbmt_2" style="display:inline;" value="Save"/>
+            </div>-->
+    
+<% include footer %>

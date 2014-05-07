@@ -1,0 +1,21 @@
+<% include header %>
+
+    <p>Welcome <%= rs[0].Name %></p>
+    <br />
+    <% if(rs.length > 0) { %>
+    <table id='welcome'>
+        <tr><th>Project</th><th>Sprint Planner</th><th>Backlog View</th><th>Team Coordinator</th></tr>
+        <% for (var i=0; rs.length > i; i++) { %>
+            <tr>
+             <td><%= rs[i].Name %></td>
+             <td><a href='/projects/sprints'>sprints</a></td>
+             <td><a href='/projects/backlog'>backlog</a></td>
+             <td><a href='/teams'>teams</a></td>
+            </tr>
+        <% } %>
+    </table>
+    <% } else { %>
+         No projects to list.
+    <% } %>
+
+<% include footer %>
